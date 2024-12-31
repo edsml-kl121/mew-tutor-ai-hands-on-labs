@@ -1,0 +1,9 @@
+cd village
+cd house1
+cat letter.txt
+cd ..
+cd house2
+cat letter.txt
+cd ..
+cd house3
+cat letter.txt
