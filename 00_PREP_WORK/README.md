@@ -6,10 +6,10 @@
 2. **Install Python**
    - Download and install Python from the official website: [Python Downloads](https://www.python.org/downloads/windows/)
 
-# Optional
-
-1. **Install Git**
+3. **Install Git**
    - Download and install Git from the official website: [Git Downloads](https://git-scm.com/downloads)
 
-2. **Install Anaconda (Windows)**
+# Optional
+
+4. **Install Anaconda (Windows)**
    - Download and install Anaconda from the official website: [Anaconda Downloads](https://www.anaconda.com/products/distribution#download-section)
