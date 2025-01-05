@@ -1,5 +1,6 @@
 ## Repository Overview
 
+Start with `python-overview.ipynb`
 1. getting started with python
 2. Variables and data types
 3. conditional structures
@@ -8,4 +9,6 @@
 6. file handling
 7. modules and packages (webcrawler, genAI with gemini as example, pandas preprocess data)
 8. OOP - classes and objects
-9. Homework - Leetcode, AI and web scraping, building web applications.
+
+`homework area`
+9. Data Structures and algorithm - Leetcode
