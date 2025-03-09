@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask SQLite CRUD App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .endpoints {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .endpoint {
+            margin-bottom: 10px;
+        }
+        .method {
+            font-weight: bold;
+            display: inline-block;
+            width: 70px;
+        }
+        .path {
+            font-family: monospace;
+            color: #0066cc;
+        }
+        .description {
+            color: #555;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>Welcome to the Flask SQLite CRUD Application</p>
+    
+    <h2>Available Endpoints:</h2>
+    <div class="endpoints">
+        <div class="endpoint">
+            <span class="method">GET</span>
+            <span class="path">/</span>
+            <span class="description">This homepage</span>
+        </div>
+        <div class="endpoint">
+            <span class="method">GET</span>
+            <span class="path">/items</span>
+            <span class="description">Get all items</span>
+        </div>
+        <div class="endpoint">
+            <span class="method">POST</span>
+            <span class="path">/items</span>
+            <span class="description">Create a new item</span>
+        </div>
+        <div class="endpoint">
+            <span class="method">PUT</span>
+            <span class="path">/items/&lt;id&gt;</span>
+            <span class="description">Update an item</span>
+        </div>
+        <div class="endpoint">
+            <span class="method">DELETE</span>
+            <span class="path">/items/&lt;id&gt;</span>
+            <span class="description">Delete an item</span>
+        </div>
+    </div>
+</body>
+</html>
