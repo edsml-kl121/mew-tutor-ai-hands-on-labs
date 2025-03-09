@@ -7,18 +7,4 @@
 ## Project Areas
 
 2. **Web Scraping and Summarizing Data with Gemini Models**
-   - Choose two news articles
-
-3. **Building a Web Application with Streamlit and Flask**
-   - Chat with Gemini model
-   - Deploy services with Dockerfile
-
-### Advanced
-
-4. **Creating a PyPI Package**
-   - Similar to pandas
-   - Publishing it
-
-5. **Creating Pytests and Following PEP8 Standards**
-
-6. **CI/CD Pipeline with GitHub Actions**
+   - Follow example at end of `applications.ipynb` notebook
