@@ -2,3 +2,5 @@ scikit-learn
 google-genai
 numpy
 streamlit
+pydantic
+dotenv
