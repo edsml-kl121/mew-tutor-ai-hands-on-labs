@@ -1,5 +1,8 @@
 # Use a small base image
 FROM alpine:latest
 
+COPY main.py .
 # Default command that prints a message
-CMD ["echo", "Hello from inside the Docker container!"]
+
+CMD ["python", "main.py"]
+CMD ["tail", "-f", "/dev/null"]

@@ -31,12 +31,13 @@ option3: `docker run -p 8501:8501 -it --rm myusername/frontend:latest sh`
 `docker tag frontend <your-dockerhub-username>/frontend:latest`
 
 
-
 Extra commands
 `docker images` -> See images
 `docker ps` -> Check Containers running
 `docker stop <containerid>` -> Stop running container
 `docker rmi <imgid>` -> Remove Image ID
 `docker rm <containerid>` -> Remove stopped container.
+`docker buildx build --platform linux/amd64 -t your-image-name:tag .`
+`docker buildx build --platform linux/amd64,linux/arm64 -t myimage:latest`
 Test `docker run -d --name my-nginx -p 8080:80 nginx`
 verify in dockerhub
