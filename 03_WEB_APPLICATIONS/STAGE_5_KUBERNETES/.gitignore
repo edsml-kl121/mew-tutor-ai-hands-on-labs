@@ -1,0 +1,8 @@
+# .gitignore
+secrets.yaml
+.env
+*.pem
+*.key
+kubeconfig
+*_secret.yaml
+kubernetes-setup.sh

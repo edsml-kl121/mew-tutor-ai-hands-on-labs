@@ -1,0 +1,5 @@
+order_id,customer_id,product
+101,1,Book
+102,2,Laptop
+103,2,Mouse
+104,5,Keyboard
