@@ -5,16 +5,18 @@ AI/ML. Beyond these 4 sessions are optional.
 
 **Session 1**: setup installation + introduction to python concept (data structures, algorithms, oop,
 etc), Git, Command Line interface
-**exercise 1**: data structures & algorithm homework
 
-**Session 2**: Generative AI concepts, Web Crawling, data visualization with pandas
-**exercise 2**: building web scraping and news summarizer
+**Session 2**: Basic Generative AI concepts, Web Crawling, data visualization with pandas
 
-**Session 3**: Building web applications with Streamlit and Flask, rest API tutorial, Discovery
-workshop in AI/ML
-**exercise 3**: Complete a chat assistant with Gen AI
+**Session 3-1**: Building web applications with Streamlit and Flask
 
-**Session 4**: AI/ML crash course and scope on the interested use case e.g. Forecasting, anomaly
+**Session 3-2**: Basics of Docker and Containerization, Deploying web application using Docker. Rest API tutorial - CRUD example.
+
+**Session 4**: Introduction to RAG, AI Agents, Structured Outputs
+
+**Session 5**: Basics of Data analysis, Introduction to BigquerySQL (Cloud Data Warehousing), Big Data processing e.g. spark. Using Cloud Services.
+
+**Session 6 (TBC)**: AI/ML crash course and scope on the interested use case e.g. Forecasting, anomaly
 detection, image recognition, etc.
-**Exercise 4**: Exercise based on use case of interest
-Each session can contain up to 2-4 hours of tutoring and several hours of homework.
+
+**Session 7 (TBC)**: Engineering & Operations topics e.g. CI/CD pipelines, ML Pipeline with vertex AI, Integration with Line (Optional)
