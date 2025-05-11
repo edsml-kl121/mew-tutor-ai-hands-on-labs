@@ -18,3 +18,5 @@ Step 3: Create a cloud object storage
 If not already create a cloud object storage bucket called `simple-vertex-ai-pipeline`
 
 Step 4: Import notebook, add in your variables and run it.
+
+Step 5: Create Cloud Scheduler and cloud function. Try to use cronjob to trigger cloud run function

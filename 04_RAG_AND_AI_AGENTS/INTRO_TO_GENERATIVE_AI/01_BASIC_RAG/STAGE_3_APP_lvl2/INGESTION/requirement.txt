@@ -1,0 +1,6 @@
+pymilvus
+google-genai
+numpy
+pydantic
+python-dotenv
+pandas
