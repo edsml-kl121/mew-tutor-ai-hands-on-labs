@@ -1,0 +1,23 @@
+{
+    "mcpServers": {
+        "weather": {
+            "command": "/usr/local/bin/python3",
+            "args": [
+                "/Users/YOURNAME/Desktop/experiment_project/mcp-claude/weather/weather.py"
+            ]
+        },
+        "filesystem": {
+            "command": "podman",
+            "args": [
+              "run",
+              "-i",
+              "--rm",
+              "--mount", "type=bind,src=/Users/YOURNAME/Desktop,dst=/projects/Desktop",
+              "--mount", "type=bind,src=/Users/YOURNAME/Desktop/experiment_project/mcp-claude/filesystem-mcp/src/filesystem/testfile,dst=/projects/other/allowed/dir,ro",
+              "--mount", "type=bind,src=/Users/YOURNAME/Desktop/experiment_project/mcp-claude/filesystem-mcp/src/filesystem/testfile/testfile.txt,dst=/projects/path/to/file.txt",
+              "mcp/filesystem",
+              "/projects"
+            ]
+        }
+    }
+}
