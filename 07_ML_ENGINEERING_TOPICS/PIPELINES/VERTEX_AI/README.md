@@ -1,6 +1,6 @@
 Step 1: Create service account
 Create a service account by searching `Service Accounts`
-![alt text](image.png)
+![alt text](images/image.png)
 
 name e.g. `simple-vertex-ai-account`
 description e.g. `vertex-ai tutorial with Mew`
@@ -8,7 +8,7 @@ description e.g. `vertex-ai tutorial with Mew`
 
 Step 2: Adding permission to the service account
 Next search to `IAM`
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 you should see your service account being added.
 
