@@ -6,6 +6,15 @@
                 "/Users/YOURNAME/Desktop/experiment_project/mcp-claude/weather/weather.py"
             ]
         },
+        "weather2": {
+            "command": "/Users/NAME/Actualpath/.local/bin/uv",
+            "args": [
+                "--directory",
+                "/Users/kandanai/Desktop/experiment_project/mew-python-intro/04_RAG_AND_AI_AGENTS/02_INTRO_AI_AGENTS/03_AGENTS_WITH_MCP/server/weather2",
+                "run",
+                "weather.py"
+            ]
+        },
         "filesystem": {
             "command": "podman",
             "args": [

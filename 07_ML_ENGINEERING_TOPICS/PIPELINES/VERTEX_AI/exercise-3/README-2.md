@@ -1,10 +1,10 @@
 Here is the second way to schedule tasks in google cloud platform.
 
-![alt text](images/image.png)
+![alt text](images/googlecloudrunfuc1.png)
 
 Execute this every one hour.
 
-![alt text](images/image-1.png)
+![alt text](images/googlecloudrunfuc2.png)
 
 You should see the task is being scheduled.
 
