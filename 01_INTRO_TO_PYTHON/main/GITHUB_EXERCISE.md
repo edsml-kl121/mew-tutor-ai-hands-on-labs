@@ -10,7 +10,7 @@ git commit -m "chore: initial setup with 4 exercise folders"
 git push origin main
 ```
 4. Push the folders to github directly in the main branch.
-5. **Branch**Create a new branch using `git checkout -b feature/exercise_1`
+5. Create a new **branch** using `git checkout -b feature/exercise_1`
 6. Make changes (e.g., add content to Exercise_1/README.md). Then execute the following
 ```
 git add .
@@ -24,3 +24,11 @@ git checkout main
 git pull origin main
 ```
 9. Create an Issue, e.g. Please add `title` to Readme in Exercise 2 and self-assign.
+
+**Notes**:
+Commit naming:
+feat: add user login functionality
+fix(auth): resolve password hashing issue
+chore: update dependencies
+docs: add API usage examples
+refactor(ui): simplify sidebar rendering
