@@ -1,2 +1,3 @@
-flask
+fastapi
+uvicorn[standard]
 db-sqlite3

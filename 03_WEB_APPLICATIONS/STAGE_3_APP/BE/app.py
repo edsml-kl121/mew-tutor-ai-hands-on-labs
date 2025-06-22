@@ -1,4 +1,6 @@
-from flask import Flask, request, jsonify
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
@@ -7,7 +9,7 @@ import time
 load_dotenv()  # take environment variables from .env.
 gemini_api_key = os.getenv("GEMINI_API_KEY", None)
 # Initialize Flask app
-app = Flask(__name__)
+app = FastAPI()
 
 # Configure Gemini API
 genai.configure(api_key=gemini_api_key)  # Replace with your Gemini API key
@@ -32,11 +34,14 @@ chat_session = model.start_chat(
   ]
 )
 
+# Define Pydantic schema for request body
+class ChatRequest(BaseModel):
+    message: str
+
 # Chat endpoint
-@app.route('/chat', methods=['POST'])
-def chat():
-    data = request.json
-    user_message = data.get('message', '')
+@app.post("/chat")
+async def chat(request: ChatRequest):
+    user_message = request.message
 
     # Generate response using Gemini API
     try:
@@ -52,7 +57,7 @@ def chat():
     except Exception as e:
         reply = f"Error generating response: {str(e)}"
 
-    return jsonify({"reply": reply})
+    return JSONResponse(content={"reply": reply})
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000, host="0.0.0.0")
+# To run:
+# uvicorn your_filename:app --reload --port 5000

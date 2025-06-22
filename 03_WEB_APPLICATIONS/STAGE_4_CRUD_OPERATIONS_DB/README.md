@@ -1,3 +1,5 @@
+Start app with: `uvicorn app:app --reload --port 5000`
+
 # Test the homepage (GET /)
 curl -X GET http://localhost:5000/
 
@@ -15,12 +17,6 @@ curl -X PUT \
   http://localhost:5000/items/1 \
   -H 'Content-Type: application/json' \
   -d '{"name": "Updated Item", "description": "Updated description"}'
-
-# Partially update an item (PATCH /items/<id>) - Replace <id> with an actual item ID
-curl -X PATCH \
-  http://localhost:5000/items/1 \
-  -H 'Content-Type: application/json' \
-  -d '{"description": "Only update the description"}'
 
 # Delete an item (DELETE /items/<id>) - Replace <id> with an actual item ID
 curl -X DELETE http://localhost:5000/items/1

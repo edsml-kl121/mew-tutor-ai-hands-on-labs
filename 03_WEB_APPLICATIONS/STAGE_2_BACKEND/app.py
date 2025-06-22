@@ -1,12 +1,16 @@
-from flask import Flask, request
+from fastapi import FastAPI
+from pydantic import BaseModel
+from fastapi.responses import PlainTextResponse
+import uvicorn
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/append_hello', methods=['POST'])
-def append_hello():
-    text = request.form.get('text', '')
-    result = text + "Hello"
-    return result
+class TextInput(BaseModel):
+    text: str
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.post("/append_hello", response_class=PlainTextResponse)
+async def append_hello(input: TextInput):
+    return input.text + "Hello"
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="0.0.0.0", port=5000, reload=True)

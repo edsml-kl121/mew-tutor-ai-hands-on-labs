@@ -1,20 +1,28 @@
-from flask import Flask, request, jsonify, render_template
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+from typing import Optional
 from database import get_db_connection, init_db
 
-app = Flask(__name__)
+app = FastAPI()
 
 # Initialize the database before the first request
 init_db()
 
+templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 # Home route
-@app.route('/')
-def hello_world():
+@app.get("/", response_class=HTMLResponse)
+async def hello_world(request: Request):
     """Route for the homepage, returns HTML hello world"""
-    return render_template('home.html')
+    return templates.TemplateResponse("home.html", {"request": request})
 
 # GET all items
-@app.route('/items', methods=['GET'])
-def get_items():
+@app.get("/items")
+async def get_items():
     """Route to GET all data from SQLite"""
     conn = get_db_connection()
     items = conn.execute('SELECT * FROM items').fetchall()
@@ -22,36 +30,40 @@ def get_items():
     
     # Convert the items to a list of dictionaries
     result = [dict(item) for item in items]
-    return jsonify(result)
+    return JSONResponse(content=result)
 
-@app.route('/items/<int:item_id>', methods=['GET'])
-def get_item(item_id):
+@app.get("/items/{item_id}")
+async def get_item(item_id: int):
     """Route to GET a specific item by ID"""
     conn = get_db_connection()
     item = conn.execute('SELECT * FROM items WHERE id = ?', (item_id,)).fetchone()
     conn.close()
     
     if item is None:
-        return jsonify({"error": f"Item with id {item_id} not found"}), 404
+        raise HTTPException(status_code=404, detail=f"Item with id {item_id} not found")
     
-    return jsonify(dict(item))
+    return JSONResponse(content=dict(item))
+
+class ItemRequest(BaseModel):
+    name: str
+    description: Optional[str] = ""
 
 # POST (create) an item
-@app.route('/items', methods=['POST'])
-def add_item():
+@app.post("/items", status_code=201)
+async def add_item(request: Request):
     """Route to POST (add) data to SQLite"""
-    if not request.is_json:
-        return jsonify({"error": "Request must be JSON"}), 400
+    if request.headers.get("content-type") != "application/json":
+        raise HTTPException(status_code=400, detail="Request must be JSON")
     
-    data = request.get_json()
+    data = await request.json()
     
     # Validate the required fields
     if 'name' not in data:
-        return jsonify({"error": "Name field is required"}), 400
+        raise HTTPException(status_code=400, detail="Name field is required")
     
     name = data['name'] # Will raise error if key doesn't exist. (Required field)
-    description = data.get('description', '') # No error raised if key doesn't exist. (Optional field)3
-    
+    description = data.get('description', '') # No error raised if key doesn't exist. (Optional field)
+
     conn = get_db_connection()
     cursor = conn.execute(
         'INSERT INTO items (name, description) VALUES (?, ?)',
@@ -63,21 +75,21 @@ def add_item():
     item_id = cursor.lastrowid
     conn.close()
     
-    return jsonify({
+    return JSONResponse(content={
         "id": item_id,
         "name": name,
         "description": description,
         "message": "Item created successfully"
-    }), 201
+    })
 
 # PUT (update) an item
-@app.route('/items/<int:item_id>', methods=['PUT'])
-def update_item(item_id):
+@app.put("/items/{item_id}")
+async def update_item(item_id: int, request: Request):
     """Route to PUT (update) data in SQLite"""
-    if not request.is_json:
-        return jsonify({"error": "Request must be JSON"}), 400
+    if request.headers.get("content-type") != "application/json":
+        raise HTTPException(status_code=400, detail="Request must be JSON")
     
-    data = request.get_json()
+    data = await request.json()
     
     # Get current item to check if it exists
     conn = get_db_connection()
@@ -85,7 +97,7 @@ def update_item(item_id):
     
     if item is None:
         conn.close()
-        return jsonify({"error": f"Item with id {item_id} not found"}), 404
+        raise HTTPException(status_code=404, detail=f"Item with id {item_id} not found")
     
     # Update the item with new values or keep existing ones
     name = data.get('name', item['name'])
@@ -98,7 +110,7 @@ def update_item(item_id):
     conn.commit()
     conn.close()
     
-    return jsonify({
+    return JSONResponse(content={
         "id": item_id,
         "name": name,
         "description": description,
@@ -106,8 +118,8 @@ def update_item(item_id):
     })
 
 # DELETE an item
-@app.route('/items/<int:item_id>', methods=['DELETE'])
-def delete_item(item_id):
+@app.delete("/items/{item_id}")
+async def delete_item(item_id: int):
     """Route to DELETE data from SQLite"""
     conn = get_db_connection()
     
@@ -116,16 +128,15 @@ def delete_item(item_id):
     
     if item is None:
         conn.close()
-        return jsonify({"error": f"Item with id {item_id} not found"}), 404
+        raise HTTPException(status_code=404, detail=f"Item with id {item_id} not found")
     
     conn.execute('DELETE FROM items WHERE id = ?', (item_id,))
     conn.commit()
     conn.close()
     
-    return jsonify({
+    return JSONResponse(content={
         "message": f"Item with id {item_id} deleted successfully"
     })
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-    # http://127.0.0.1:5000/
+# To run:
+# uvicorn your_filename:app --reload --port 5000
