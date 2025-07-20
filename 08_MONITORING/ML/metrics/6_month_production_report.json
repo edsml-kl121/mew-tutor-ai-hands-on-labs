@@ -1,0 +1,14 @@
+{
+  "deployment_date": "2024-01-15T00:00:00",
+  "monitoring_period_weeks": 24,
+  "total_samples_processed": 1120,
+  "average_accuracy": 0.9402083333333332,
+  "accuracy_std": 0.029944846644785295,
+  "min_accuracy": 0.9,
+  "max_accuracy": 1.0,
+  "average_f1_score": 0.9551767613109128,
+  "weeks_with_drift": 0,
+  "drift_percentage": 0.0,
+  "reference_accuracy": 0.9873417721518988,
+  "performance_degradation": 0.04234177215189883
+}

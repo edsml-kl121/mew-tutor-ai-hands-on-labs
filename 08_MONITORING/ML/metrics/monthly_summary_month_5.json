@@ -1,0 +1,14 @@
+{
+  "month": 5,
+  "weeks_included": [
+    16,
+    17,
+    18,
+    19
+  ],
+  "avg_accuracy": 0.9349999999999999,
+  "avg_f1_score": 0.9516149390758075,
+  "drift_weeks": 0,
+  "total_samples": 160,
+  "performance_trend": "stable"
+}

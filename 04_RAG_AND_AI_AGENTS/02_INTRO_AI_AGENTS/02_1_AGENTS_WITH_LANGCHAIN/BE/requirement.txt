@@ -1,0 +1,4 @@
+langchain
+langchain-community
+flask
+langchain_google_genai

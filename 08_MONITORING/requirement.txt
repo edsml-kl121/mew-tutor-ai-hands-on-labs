@@ -1,0 +1,7 @@
+google-generativeai 
+pandas
+evidently
+evidently[llm]
+ragas
+langchain_google_genai
+langchain_ibm
