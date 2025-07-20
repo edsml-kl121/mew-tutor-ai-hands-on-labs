@@ -4,3 +4,6 @@ myenv
 DS_Store
 **/__pycache__
 **/venv
+08_MONITORING/**/*.html
+08_MONITORING/**/*.json
+08_MONITORING/**/*.csv
