@@ -1,0 +1,6 @@
+google-genai
+numpy
+streamlit
+pydantic
+python-dotenv
+opencv-python
